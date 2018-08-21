@@ -1,0 +1,16 @@
+# URL Shortener
+Proceso de generacion:
+Recibe como parametro la url a convertir.
+Recibe como parametro la url personalizada por el usuario. (Si no está presente se genera por defecto)
+Se genera un string corto y unico como alias para esa url (comunmente un random de 6 caracteres).
+Se comprueba que ese string no exista actualmente asociado a otra url. caso sontrario se genera uno nuevo hasta cumplir la condición de unico.
+Si se recibio el parametro de url personalizada. se comprueba que no exista. caso contrario se informa al usuario para que elija otro nombre
+Si el link es unico y no está asociado a ninguna url existente, se guarda en base de datos y se devuelve al usuario el resultado.
+
+Proceso de redireccionamiento:
+Se toma el segundo parametro de la url.
+Se busca en base de datos la url asociada a dicho parametro y se redirecciona a la url asociada.
+En caso de no encontrarse se informa un 404.
+
+Proceso de mantenimiento:
+Task periodica con el objetivo de buscar urls creadas que tengan el campo created_at mayor a 6 meses y eliminarlas.
